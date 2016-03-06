@@ -1,8 +1,22 @@
 - if @photos.any?
   - @photos.each do |photo|
     = link_to photo.name, photo_path(photo)
+    = link_to "Comment on #{photo.name}", new_photo_comment_path(photo)
     = link_to "Edit #{photo.name}", edit_photo_path(photo)
     = link_to "Delete #{photo.name}", photo_path(photo), method: :delete
+
+    %h3
+      Comments on:
+      = photo.name
+
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.thoughts
+    - else
+      %p No comments
+
 - else
   %h1 No photos yet!
 
