@@ -67,6 +67,18 @@ feature 'photos' do
       expect(page).not_to have_content 'Image thing'
       expect(page).to have_content 'Photo deleted successfully'
     end
+
+    context 'an invalid photo' do
+      it 'does not let you submit a photo without a name' do
+        visit '/photos'
+        click_link 'Add a photo'
+        fill_in 'Name', with: 'z'
+        click_button 'Create Photo'
+        expect(page).not_to have_css 'h2', text: 'z'
+        expect(page).to have_content 'error'
+      end
+    end
+
   end
 
 end
