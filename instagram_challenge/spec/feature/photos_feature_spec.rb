@@ -32,4 +32,41 @@ feature 'photos' do
     end
   end
 
+
+  context 'viewing photo details' do
+    let!(:image_thing){Photo.create(name:'Image thing')}
+
+    scenario 'lets a user view a photo' do
+     visit '/photos'
+     click_link 'Image thing'
+     expect(page).to have_content 'Image thing'
+     expect(current_path).to eq "/photos/#{image_thing.id}"
+    end
+  end
+
+  context 'editing photos' do
+    before { Photo.create name: 'Image thing' }
+
+    scenario 'let a user edit a photo' do
+     visit '/photos'
+     click_link 'Edit Image thing'
+     fill_in 'Name', with: 'New image thing'
+     click_button 'Update Photo'
+     expect(page).to have_content 'New image thing'
+     expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'deleting photos' do
+
+    before {Photo.create name: 'Image thing'}
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/photos'
+      click_link 'Delete Image thing'
+      expect(page).not_to have_content 'Image thing'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+  end
+
 end
