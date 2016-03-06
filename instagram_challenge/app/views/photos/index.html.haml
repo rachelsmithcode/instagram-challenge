@@ -4,7 +4,10 @@
     = link_to "Comment on #{photo.name}", new_photo_comment_path(photo)
     = link_to "Edit #{photo.name}", edit_photo_path(photo)
     = link_to "Delete #{photo.name}", photo_path(photo), method: :delete
-
+    = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+    %span.likes_count= photo.likes.count
+    = 'like'.pluralize photo.likes.count
+    %p= pluralize photo.likes.count, 'likes'
     %h3
       Comments on:
       = photo.name

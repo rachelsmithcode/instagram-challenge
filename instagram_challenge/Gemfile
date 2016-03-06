@@ -39,7 +39,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'devise'
   gem 'paperclip'
-# gem 'omniauth-facebook'
+  gem 'omniauth-facebook'
+  gem 'aws-sdk'
 end
 
 group :development do
@@ -55,4 +56,6 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

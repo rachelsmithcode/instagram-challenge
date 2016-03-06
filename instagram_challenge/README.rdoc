@@ -1,5 +1,17 @@
 == README
 
+Sorry everyone, personal events meant I only got to start this at 7 today (sunday) so not too bad for 4 hours
+...but not quite there yet! I'll get it spruced up tomorrow.
+
+Things still to do:
+Create helper for signup to allow failing tests to pass
+sort out new facebook key
+create new bucket to sort out aws
+make it so users can only edit or delete thier own photos.
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
